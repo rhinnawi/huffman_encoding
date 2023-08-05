@@ -10,44 +10,33 @@ may be newly written, and so only the parent directory must already exist.
 Author: Rani Hinnawi
 Date: 2023-07-25
 """
-from typing import TextIO
+from typing import TextIO, List
 
 
-def is_valid_io(in_file: TextIO, out_file: TextIO) -> bool:
+def is_valid_io(*files: List[TextIO]) -> bool:
     """
     Function that validates that the input and the path to the output exist
 
     Args:
-        in_file (TextIO): input text file
-        out_file (TextIO): output text file
+        *files (List[TextIO]): list of possible file paths
 
     Returns:
-        bool: True if file paths are valid
+        bool: True if all file paths are valid
 
     Raises:
-        FileNotFoundError: If either in_file or out_file does not exist
+        FileNotFoundError: If any file passed in does not exist
     """
-    error_message = ""
+    error_message = "ERROR: the files below do not exist\n"
     error = False
 
-    # Validate input path
-    if (not in_file.exists()):
-        error_message = \
-            f"The input file path {in_file} does not exist."
-        error = True
-
-    # Validate output path. Incorporate into preexisting error message
-    if (not out_file.parent.exists()):
-        if (error):
-            error_message += " "
-        else:
+    for file in files:
+        # Validate path
+        if not file.exists():
+            error_message += f"- {file.name}\n"
             error = True
 
-        error_message += "The parent directory path to the output file "
-        error_message += f"{out_file} does not exist."
-
     # Raise error if either file is invalid. Otherwise, return True
-    if (error):
-        raise FileNotFoundError("ERROR: " + error_message)
+    if error:
+        raise FileNotFoundError(error_message)
 
     return True

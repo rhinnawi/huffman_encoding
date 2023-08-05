@@ -36,9 +36,8 @@ freq_table = Path(args.frequency_table) if args.frequency_table else Path(
 
 # Validate file paths then run main program
 try:
-    is_valid_io(in_file, out_file)
-    # run_conversions(in_file, out_file,
-    #                 iterative=args.iterative, debug=args.debug)
+    is_valid_io(in_file, out_file, freq_table)
+    # TODO: define and call run() function
     print('OK')
 except FileNotFoundError as fnfe:
     error_message = fnfe.args[0]
