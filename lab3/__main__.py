@@ -3,7 +3,8 @@ __main__
 
 This is the entry point for the huffman_encoding package. It runs when explicity 
 called and not by default when the package is imported. It can be called by the
-command: python -m huffman_encoding input_file output_file [--debug]
+command: 
+python -m lab3 input_file output_file [...optional arguments]
 
 The primary functionality lies in the package modules, and not directly in the
 main module here.
@@ -15,6 +16,7 @@ from sys import stderr
 from pathlib import Path
 import argparse
 from support.is_valid_io import is_valid_io
+from lab3.run import run
 
 DEFAULT_FREQUENCY_TABLE_PATH = "./DefaultFreqTable.txt"
 
@@ -37,9 +39,8 @@ freq_table = Path(args.frequency_table) if args.frequency_table else Path(
 # Validate file paths then run main program
 try:
     is_valid_io(in_file, out_file, freq_table)
-    # TODO: define and call run() function
-    print('OK')
+    run()
 except FileNotFoundError as fnfe:
     error_message = fnfe.args[0]
-    if (args.debug):
+    if args.debug:
         print(error_message, file=stderr)

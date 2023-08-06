@@ -16,11 +16,21 @@ class HuffmanNode:
     Binary tree node object specifically designed for Huffman Trees
     """
 
-    def __init__(self, characters: str, frequency: int):
+    def __init__(self, characters: str, frequency: int) -> 'HuffmanNode':
         self._chars = characters
         self._freq = frequency
         self._right = None
         self._left = None
+
+    def __str__(self) -> str:
+        """
+        Creates a string representation of a Huffman Node
+
+        Returns:
+            str: string representing the node as the key-value pair
+                'characters: frequency'
+        """
+        return f'{self._chars}: {self._freq}'
 
     def get_right(self) -> Optional['HuffmanNode']:
         """
