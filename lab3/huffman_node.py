@@ -183,8 +183,14 @@ class HuffmanNode:
 
         Returns:
             HuffmanNode: current node instance
+
+        Raises:
+            ValueError: when non-integer is passed in
         """
-        self._freq = int(new_frequency)
+        if not isinstance(new_frequency, int):
+            raise ValueError("Frequency must be an integer")
+
+        self._freq = new_frequency
         return self
 
     def set_characters(self, new_characters: str) -> 'HuffmanNode':
@@ -196,7 +202,13 @@ class HuffmanNode:
 
         Returns:
             HuffmanNode: current node instance
+
+        Raises:
+            ValueError: when non-string is passed in
         """
+        if not isinstance(new_characters, str):
+            raise ValueError("Characters must be an string type")
+
         self._chars = new_characters
         return self
 
@@ -210,7 +222,13 @@ class HuffmanNode:
 
         Returns:
             HuffmanNode: current Node instance
+
+        Raises:
+            TypeError: when new_right is not a HuffmanNode
         """
+        if not isinstance(new_right, HuffmanNode):
+            raise TypeError("New node must be a HuffmanNode")
+
         self._right = new_right
         return self
 
@@ -224,6 +242,21 @@ class HuffmanNode:
 
         Returns:
             HuffmanNode: current Node instance
+
+        Raises:
+            TypeError: when new_right is not a HuffmanNode
         """
+        if not isinstance(new_left, HuffmanNode):
+            raise TypeError("New node must be a HuffmanNode")
+
         self._left = new_left
         return self
+
+    def is_leaf(self) -> bool:
+        """
+        Indicates whether the current HuffmanNode instance is a leaf node.
+
+        Returns:
+            bool: True if it has no child nodes, otherwise false
+        """
+        return (self._left is None) and (self._right is None)

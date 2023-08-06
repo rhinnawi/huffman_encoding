@@ -9,7 +9,7 @@ Author: Rani Hinnawi
 Date: 2023-08-08
 """
 from typing import TextIO
-from lab3.huffman_encoding import HuffmanEncoding
+from lab3.huffman_tree import HuffmanTree
 
 
 def run(frequency_table: TextIO):
@@ -17,5 +17,6 @@ def run(frequency_table: TextIO):
     Wrapper function for encoding or decoding a string using Huffman Encoding
     and a user-provided frequency table.
     """
-    huffmanTree = HuffmanEncoding(frequency_table)
+    huffman_tree = HuffmanTree(frequency_table)
+    print(huffman_tree)
     print('OK')
