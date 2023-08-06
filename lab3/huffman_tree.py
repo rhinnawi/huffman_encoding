@@ -21,8 +21,8 @@ class HuffmanTree:
     """
 
     def __init__(self, frequency_table: TextIO) -> 'HuffmanTree':
-        self._root = self._build_tree(frequency_table)
-        self._nodes_pq: Optional['Heap'] = None
+        self._frequency_table = frequency_table
+        self._root = self._build_tree()
 
     def __str__(self) -> str:
         """
@@ -50,24 +50,22 @@ class HuffmanTree:
 
         return ', '.join(preorder(self._root))
 
-    def _build_tree(self, frequency_table_file: TextIO) -> 'HuffmanNode':
+    def _build_priority_queue(self) -> 'Heap':
         """
-        Encodes characters and their frequencies as HuffmanNodes in a binary
-        tree structure, or Huffman Tree.
-
-        Args:
-            frequency_table_file (TextIO): File containing key-value pairs of
-                characters and their frequencies
+        Helper method for building the priority queue containing all leaf nodes.
 
         Returns:
-            'HuffmanNode': root of new Huffman Tree
+            Heap: priority queue containing HuffmanNode objects within a min
+                heap
 
-        TODO: complete implementation, including error checking
+        Raises:
+            ValueError: character key is not a single alphabetical character or
+                frequency value is not an integer >= 1
         """
-        # Set up a priority queue with all leaf nodes
         nodes_pq = Heap()
-        with open(frequency_table_file, 'r', encoding="utf-8") as freq_table:
+        with open(self._frequency_table, 'r', encoding="utf-8") as freq_table:
             for line in freq_table:
+                # Get character and frequency values
                 character, _, frequency = line.strip().split()
 
                 try:
@@ -91,10 +89,27 @@ class HuffmanTree:
                     error = "INVALID CHAR: key must be alphabetical"
                     raise ValueError(error)
 
+                # Build new leaf node for the character and its frequency
                 new_node = HuffmanNode().set_characters(
                     character).set_frequency(frequency)
 
+                # Add new node to priority queue
                 nodes_pq.heap_push(new_node)
+
+        return nodes_pq
+
+    def _build_tree(self) -> 'HuffmanNode':
+        """
+        Encodes characters and their frequencies as HuffmanNodes in a binary
+        tree structure, or Huffman Tree.
+
+        Returns:
+            'HuffmanNode': root of new Huffman Tree
+
+        TODO: complete implementation, including error checking
+        """
+        # Set up a priority queue with all leaf nodes
+        nodes_pq = self._build_priority_queue()
 
         # Combine nodes into left-right pairs under a new parent
         while nodes_pq.size() > 1:
