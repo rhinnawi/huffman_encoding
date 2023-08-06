@@ -158,7 +158,7 @@ class HuffmanNode:
         Getter method for retrieving right child node.
 
         Returns:
-            'Node': right child of current Node instance
+            HuffmanNode: right child of current Node instance
         """
         return self._right
 
@@ -167,7 +167,7 @@ class HuffmanNode:
         Getter method for retrieving left child node.
 
         Returns:
-            'Node': left child of current Node instance
+            HuffmanNode: left child of current Node instance
         """
         return self._left
 
@@ -182,7 +182,7 @@ class HuffmanNode:
                 characters stored in a frequency table
 
         Returns:
-            'HuffmanNode': current node instance
+            HuffmanNode: current node instance
         """
         self._freq = new_frequency
         return self
@@ -195,7 +195,7 @@ class HuffmanNode:
             new_characters: current instance's characters stored
 
         Returns:
-            'HuffmanNode': current node instance
+            HuffmanNode: current node instance
         """
         self._chars = new_characters
         return self
@@ -206,10 +206,10 @@ class HuffmanNode:
         node.
 
         Args:
-            new_right ('HuffmanNode'): new right child node
+            new_right (HuffmanNode): new right child node
 
         Returns:
-            'HuffmanNode': current Node instance
+            HuffmanNode: current Node instance
         """
         self._right = new_right
         return self
@@ -220,10 +220,10 @@ class HuffmanNode:
         node.
 
         Args:
-            new_right ('HuffmanNode'): new left child node
+            new_right (HuffmanNode): new left child node
 
         Returns:
-            'HuffmanNode': current Node instance
+            HuffmanNode: current Node instance
         """
         self._left = new_left
         return self
