@@ -40,7 +40,8 @@ class HuffmanEncoding:
         with open(frequency_table_file, 'r', encoding="utf-8") as freq_table:
             for line in freq_table:
                 character, _, frequency = line.strip()
-                new_node = HuffmanNode(character, frequency)
+                new_node = HuffmanNode().set_characters(
+                    character).set_frequency(frequency)
                 priority_queue.heap_push(new_node)
 
         print(priority_queue)
