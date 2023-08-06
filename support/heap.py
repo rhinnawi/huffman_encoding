@@ -1,7 +1,7 @@
 """
 heap
 
-This module contains a Heap class that implements the heap ADT, including
+This module contains a Heap class that implements the Min Heap ADT, including
 several optional methods. The underlying data structure is a Python List. As a 
 stylistic choice, methods that would otherwise return None will instead return
 self, allowing for method chaining. 
@@ -17,9 +17,9 @@ T = TypeVar('T')
 
 class Heap:
     """
-    This class holds items of any type in a generic Max Heap data structure.
+    This class holds items of any type in a generic Min Heap data structure.
     Items must be of the same type and allow for >, <, !=, and == comparisons.
-    All uses of the term 'heap' specifically reference a max heap.
+    All uses of the term 'heap' specifically reference a min heap.
     """
 
     def __init__(self):
@@ -50,7 +50,7 @@ class Heap:
 
     def heapify(self) -> 'Heap':
         """
-        Enforces max heap properties. The top item must carry the max value,
+        Enforces min heap properties. The top item must carry the min value,
         and each node must be larger than its child nodes.
 
         Returns:
@@ -72,10 +72,10 @@ class Heap:
 
     def get_root(self) -> T:
         """
-        Getter method for max value, placed at the root of the heap.
+        Getter method for min value, placed at the root of the heap.
 
         Returns:
-            T: max value in heap
+            T: min value in heap
 
         Raises:
             IndexError: if heap is empty
@@ -96,10 +96,10 @@ class Heap:
     def heap_pop(self):
         """
         Removes and replaces the item on the heap with the largest value,
-        placed at the root. Maintains max heap properties.
+        placed at the root. Maintains min heap properties.
 
         Returns:
-            T: max value in heap
+            T: min value in heap
 
         Raises:
             IndexError: if heap is empty
@@ -155,7 +155,7 @@ class Heap:
         heap_size = self.size()
 
         while child_index < heap_size:
-            # Find the max among the node and all the node's children
+            # Find the min among the node and all the node's children
             min_value = value
             min_index = -1
 
