@@ -45,8 +45,12 @@ class HuffmanNode:
         Returns:
             bool: True if this node is less than the other node.
         """
-        if self._freq != other._freq:
-            return self._freq < other._freq
+        print(self._freq, other.get_frequency())
+        if self._freq != other.get_frequency():
+            print("different frequencies")
+            print(type(self._freq), type(other.get_frequency()))
+            print(self._freq < other.get_frequency())
+            return self._freq < other.get_frequency()
         return self._compare_chars(other) < 0
 
     def __gt__(self, other: 'HuffmanNode') -> bool:
@@ -61,8 +65,8 @@ class HuffmanNode:
         Returns:
             bool: True if this node is greater than the other node.
         """
-        if self._freq != other._freq:
-            return self._freq > other._freq
+        if self._freq != other.get_frequency():
+            return self._freq > other.get_frequency()
         return self._compare_chars(other) > 0
 
     def __le__(self, other: 'HuffmanNode') -> bool:
@@ -100,7 +104,7 @@ class HuffmanNode:
         Returns:
             bool: True if this node is equal to the other node.
         """
-        return self._freq == other._freq and \
+        return self._freq == other.get_frequency() and \
             self._chars == other.get_characters()
 
     def __ne__(self, other: 'HuffmanNode') -> bool:
@@ -184,7 +188,7 @@ class HuffmanNode:
         Returns:
             HuffmanNode: current node instance
         """
-        self._freq = new_frequency
+        self._freq = int(new_frequency)
         return self
 
     def set_characters(self, new_characters: str) -> 'HuffmanNode':

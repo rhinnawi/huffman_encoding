@@ -28,11 +28,11 @@ class Heap:
         """
         self.heap: List[Optional[T]] = []
 
-    def __str__(self):
+    def __str__(self) -> str:
         """
         Return a basic string representation of the heap
         """
-        return ' '.join(map(str, self.heap))
+        return f"Heap[{', '.join(map(str, self.heap))}]"
 
     def heap_push(self, item: T) -> 'Heap':
         """
@@ -138,6 +138,27 @@ class Heap:
             parent_index = (index - 1) // 2
 
         return self
+
+    def _percolate_down_new(self, index: int) -> 'Heap':
+        heap_size = self.size()
+        # value = self.heap[index]
+
+        while index < heap_size:
+            left_child_index = 2 * index + 1
+            right_child_index = 2 * index + 2
+            max_index = index
+
+            if left_child_index < heap_size and self.heap[left_child_index] > self.heap[max_index]:
+                max_index = left_child_index
+
+            if right_child_index < heap_size and self.heap[right_child_index] > self.heap[max_index]:
+                max_index = right_child_index
+
+            if max_index != index:
+                self.heap[index], self.heap[max_index] = self.heap[max_index], self.heap[index]
+                index = max_index
+            else:
+                return self
 
     def _percolate_down(self, index: int) -> 'Heap':
         """

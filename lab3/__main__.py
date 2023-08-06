@@ -18,7 +18,7 @@ import argparse
 from support.is_valid_io import is_valid_io
 from lab3.run import run
 
-DEFAULT_FREQUENCY_TABLE_PATH = "./DefaultFreqTable.txt"
+DEFAULT_FREQUENCY_TABLE_PATH = "lab3/DefaultFreqTable.txt"
 
 # Set up command line argument parsing
 arg_parser = argparse.ArgumentParser()
@@ -39,7 +39,7 @@ freq_table = Path(args.frequency_table) if args.frequency_table else Path(
 # Validate file paths then run main program
 try:
     is_valid_io(in_file, out_file, freq_table)
-    run()
+    run(freq_table)
 except FileNotFoundError as fnfe:
     error_message = fnfe.args[0]
     if args.debug:
