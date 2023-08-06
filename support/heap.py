@@ -128,7 +128,7 @@ class Heap:
             'Heap': current instance of the heap
         """
         parent_index = (index - 1) // 2
-        while index > 0 and self.heap[index] > self.heap[parent_index]:
+        while index > 0 and self.heap[index] < self.heap[parent_index]:
             # Swap
             self.heap[index], self.heap[parent_index] = \
                 self.heap[parent_index], self.heap[index]
@@ -138,27 +138,6 @@ class Heap:
             parent_index = (index - 1) // 2
 
         return self
-
-    def _percolate_down_new(self, index: int) -> 'Heap':
-        heap_size = self.size()
-        # value = self.heap[index]
-
-        while index < heap_size:
-            left_child_index = 2 * index + 1
-            right_child_index = 2 * index + 2
-            max_index = index
-
-            if left_child_index < heap_size and self.heap[left_child_index] > self.heap[max_index]:
-                max_index = left_child_index
-
-            if right_child_index < heap_size and self.heap[right_child_index] > self.heap[max_index]:
-                max_index = right_child_index
-
-            if max_index != index:
-                self.heap[index], self.heap[max_index] = self.heap[max_index], self.heap[index]
-                index = max_index
-            else:
-                return self
 
     def _percolate_down(self, index: int) -> 'Heap':
         """
@@ -177,23 +156,23 @@ class Heap:
 
         while child_index < heap_size:
             # Find the max among the node and all the node's children
-            max_value = value
-            max_index = -1
+            min_value = value
+            min_index = -1
 
             for i in range(2):
                 child = child_index + i
-                if child < heap_size and self.heap[child] > max_value:
-                    max_value = self.heap[child]
-                    max_index = child
+                if child < heap_size and self.heap[child] < min_value:
+                    min_value = self.heap[child]
+                    min_index = child
 
-            if max_value == value:
+            if min_value == value:
                 return self
             else:
                 # Case: current item is smaller than at least one child. Swap
                 # and continue percolating down heap
-                self.heap[index], self.heap[max_index] = \
-                    self.heap[max_index], self.heap[index]
-                index = max_index
+                self.heap[index], self.heap[min_index] = \
+                    self.heap[min_index], self.heap[index]
+                index = min_index
                 child_index = 2 * index + 1
 
         return self

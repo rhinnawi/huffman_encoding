@@ -45,11 +45,7 @@ class HuffmanNode:
         Returns:
             bool: True if this node is less than the other node.
         """
-        print(self._freq, other.get_frequency())
         if self._freq != other.get_frequency():
-            print("different frequencies")
-            print(type(self._freq), type(other.get_frequency()))
-            print(self._freq < other.get_frequency())
             return self._freq < other.get_frequency()
         return self._compare_chars(other) < 0
 
