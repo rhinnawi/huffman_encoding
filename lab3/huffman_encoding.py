@@ -161,3 +161,35 @@ class HuffmanEncoding:
                 raise ValueError(self._value_error_message(char))
 
         return encoded
+
+    def decode(self, compressed_string: str) -> str:
+        """
+        Decompresses a given compressed binary string using the Huffman Tree.
+
+        Args:
+            compressed_string (str): the compressed binary string
+
+        Returns:
+            str: the decompressed string
+
+        Raises:
+            ValueError: if a character (bit) is not a 0 or 1
+        """
+        node = self._tree.get_root()
+        result = ""
+
+        for bit in compressed_string:
+            if bit == '0':
+                node = node.get_left()
+            elif bit == '1':
+                node = node.get_right()
+            else:
+                # Error case: not a binary string
+                error = "INVALID CHAR: must be a binary bit"
+                raise ValueError(error)
+
+            if node.is_leaf():
+                result += node.get_characters()
+                node = self._tree.get_root()
+
+        return result
