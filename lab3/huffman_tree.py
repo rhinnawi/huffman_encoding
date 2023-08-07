@@ -1,5 +1,5 @@
 """
-huffman_encoding
+huffman_tree
 
 This module contains a class for Huffman Tree. It includes functionality for
 storing values from a frequency table. This implementation allows for method 
