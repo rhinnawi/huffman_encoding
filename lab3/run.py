@@ -10,7 +10,7 @@ Date: 2023-08-08
 """
 from typing import TextIO
 from lab3.huffman_tree import HuffmanTree
-from lab3.huffman_encoding import HuffmanEncoding
+# from lab3.huffman_encoding import HuffmanEncoding
 # from lab3.huffman_node import HuffmanNode
 
 
@@ -22,16 +22,16 @@ def run(frequency_table: TextIO):
     huffman_tree = HuffmanTree(frequency_table)
     print(huffman_tree, '\n')
 
-    huffman_encoding = HuffmanEncoding(huffman_tree)
-    print(huffman_encoding, '\n')
-    print(huffman_tree.has_memo())
+    # huffman_encoding = HuffmanEncoding(huffman_tree)
+    # print(huffman_encoding, '\n')
+    print("has memo:", huffman_tree.has_memo())
 
     huffman_tree = HuffmanTree(frequency_table, True)
     print(huffman_tree, '\n')
 
-    huffman_encoding = HuffmanEncoding(huffman_tree)
-    print(huffman_encoding, '\n')
+    # huffman_encoding = HuffmanEncoding(huffman_tree)
     print(huffman_tree.has_memo())
+    print(huffman_tree.print_codes(), '\n')
     print(list(map(str, huffman_tree.get_memo())))
 
     print('OK')
