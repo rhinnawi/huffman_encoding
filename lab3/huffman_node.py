@@ -9,6 +9,7 @@ then lexicographical ordering. This implementation allows for method chaining.
 Author: Rani Hinnawi
 Date: 2023-08-08
 """
+import re
 from typing import Optional
 
 
@@ -20,6 +21,7 @@ class HuffmanNode:
     def __init__(self) -> 'HuffmanNode':
         self._chars: Optional[str] = None
         self._freq: Optional[int] = None
+        self._code = ""
         self._right: Optional['HuffmanNode'] = None
         self._left: Optional['HuffmanNode'] = None
 
@@ -136,6 +138,16 @@ class HuffmanNode:
             # Shortened version of if-else statements returning -1, 0, or 1
             return int(self._chars < other.get_characters())
 
+    def get_code(self) -> str:
+        """
+        Getter method for retrieving current node's Huffman Code, a binary
+        number indicating its position along the binary Huffman Tree.
+
+        Returns:
+            str: current node instance's binary Huffman code
+        """
+        return self._code
+
     def get_frequency(self) -> int:
         """
         Getter method for retrieving frequency of current node
@@ -172,6 +184,27 @@ class HuffmanNode:
             HuffmanNode: left child of current Node instance
         """
         return self._left
+
+    def set_code(self, new_code: str) -> 'HuffmanNode':
+        """
+        Setter method for updating current node's Huffman Code, a binary
+        number indicating its position along the binary Huffman Tree.
+
+        Args:
+            new_code (str): string in the form of a binary number
+
+        Returns:
+            HuffmanNode: current node instance
+
+        Raises:
+            ValueError: new string is not a valid binary number
+        """
+        if (not isinstance(new_code, str)) or \
+                (re.match("^[01]*$", new_code) is None):
+            raise ValueError("Must be a valid binary number string")
+
+        self._code = new_code
+        return self
 
     def set_frequency(self, new_frequency: int) -> 'HuffmanNode':
         """

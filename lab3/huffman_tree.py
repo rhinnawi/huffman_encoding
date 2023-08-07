@@ -135,3 +135,12 @@ class HuffmanTree:
 
         # Last item is the root of a new binary tree. Return root
         return nodes_pq.heap_pop()
+
+    def get_root(self) -> 'HuffmanNode':
+        """
+        Getter method for retrieving the root node of the Huffman Tree
+
+        Returns:
+            HuffmanNode: the root node
+        """
+        return self._root

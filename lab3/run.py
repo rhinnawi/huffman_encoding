@@ -10,6 +10,8 @@ Date: 2023-08-08
 """
 from typing import TextIO
 from lab3.huffman_tree import HuffmanTree
+from lab3.huffman_encoding import HuffmanEncoding
+# from lab3.huffman_node import HuffmanNode
 
 
 def run(frequency_table: TextIO):
@@ -18,5 +20,9 @@ def run(frequency_table: TextIO):
     and a user-provided frequency table.
     """
     huffman_tree = HuffmanTree(frequency_table)
-    print(huffman_tree)
+    print(huffman_tree, '\n')
+
+    huffman_encoding = HuffmanEncoding(huffman_tree)
+    print(huffman_encoding, '\n')
+
     print('OK')
