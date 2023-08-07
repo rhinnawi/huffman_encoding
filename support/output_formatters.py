@@ -47,19 +47,23 @@ def format_huffman_tree(huffman_tree: 'HuffmanTree', nodes_per_line: int) -> str
             List[str]: list of Python nodes as key-value pairs in format
                 character: frequency
         """
+        # Add nodes to 'representation' list
         rep = []
+
         # Visit root, then left, then right
         if not root:
             return rep, nodes_left
 
         node_str = str(root)
 
+        # Node is placed on new line when 0 nodes left per line are remaining
         if nodes_left == 0:
             node_str = "\n\t" + node_str
             nodes_left = nodes_per_line
         else:
             nodes_left -= 1
 
+        # Add HuffmanNode string, then visit left and right branches
         rep.append(node_str)
 
         if root.get_left():
@@ -71,6 +75,8 @@ def format_huffman_tree(huffman_tree: 'HuffmanTree', nodes_per_line: int) -> str
                 root.get_right(), nodes_left)
             rep.extend(right)
 
+        # Returns preorder representation list and remaining nodes for
+        # possible recursive calls
         return rep, nodes_left
 
     if nodes_per_line < 1:

@@ -8,4 +8,6 @@ AOSHCBIUGYZXQPRTNFDEWLKVJM: 413, AOSHCBIUGYZXQPRT: 244, AOSHCBI: 138, AOS: 72, A
 	N: 24, FD: 23, F: 12, D: 11, E: 42, WLKVJM: 80, 
 	WL: 41, W: 21, L: 20, KVJM: 39, KVJ: 20, K: 10, 
 	VJ: 10, V: 5, J: 5, M: 19
-Runtime: 364400ns
+
+Size (number of frequencies): 26
+Runtime: 628100ns
