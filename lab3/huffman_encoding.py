@@ -96,6 +96,21 @@ class HuffmanEncoding:
 
         return self
 
+    def encode(self, expression: str) -> str:
+        """
+        Method for encoding an expression string using the Huffman Tree
+
+        Args:
+            expression (str): the string being encoded
+
+        Returns:
+            str: a new binary string made entirely of 1s and 0s
+        """
+        if self._tree.has_memo():
+            return self._encode_with_memo(expression)
+
+        return self._encode_without_memo(expression)
+
     def _value_error_message(self, char: str) -> str:
         """
         Helper method for standardizing value error message across both encode
