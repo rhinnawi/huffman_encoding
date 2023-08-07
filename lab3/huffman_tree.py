@@ -47,6 +47,16 @@ class HuffmanTree:
                 characters: frequency
         """
         def preorder(root: Optional['HuffmanNode']) -> List[str]:
+            """
+            Preorder traversal of Huffman Tree and its nodes.
+
+            Args:
+                root (HuffmanNode): root of a Huffman tree or subtree OR None
+
+            Returns:
+                List[str]: list of Python nodes as key-value pairs in format
+                    character: frequency
+            """
             rep = []
 
             # Visit root, then left, then right

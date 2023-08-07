@@ -7,9 +7,78 @@ outputted to a text file.
 Author: Rani Hinnawi
 Date: 2023-08-08
 """
+from sys import setrecursionlimit
+from typing import Optional, List, Tuple
 from support.performance import Performance
+from lab3.huffman_tree import HuffmanTree
+from lab3.huffman_node import HuffmanNode
 
 # TODO: format huffman encoding outputs
+# Set recursion limit. Python default: 1000. Should not need to exceed number
+# of letters in Latin (English) alphabet
+RECURSION_LIMIT = 52
+setrecursionlimit(RECURSION_LIMIT)
+
+
+def format_huffman_tree(huffman_tree: 'HuffmanTree', nodes_per_line: int) -> str:
+    """
+    Function that formats the number of Huffman Tree nodes per line for easier
+    readability in an output file.
+
+    Args:
+        huffman_tree (HuffmanTree): Huffman Tree being printed out
+        nodes_per_line (int): max number of Huffman Nodes printed per line
+
+    Returns:
+        str: string representation of Huffman Nodes
+
+    Raises:
+        ValueError: when nodes_per_line is not a positive integer
+    """
+    def preorder(root: Optional['HuffmanNode'], nodes_left=nodes_per_line) \
+            -> Tuple[List[str], int]:
+        """
+        Preorder traversal of Huffman Tree and its nodes.
+
+        Args:
+            root (HuffmanNode): root of a Huffman tree or subtree OR None
+
+        Returns:
+            List[str]: list of Python nodes as key-value pairs in format
+                character: frequency
+        """
+        rep = []
+        # Visit root, then left, then right
+        if not root:
+            return rep, nodes_left
+
+        node_str = str(root)
+
+        if nodes_left == 0:
+            node_str = "\n\t" + node_str
+            nodes_left = nodes_per_line
+        else:
+            nodes_left -= 1
+
+        rep.append(node_str)
+
+        if root.get_left():
+            left, nodes_left = preorder(root.get_left(), nodes_left)
+            rep.extend(left)
+
+        if root.get_right():
+            right, nodes_left = preorder(
+                root.get_right(), nodes_left)
+            rep.extend(right)
+
+        return rep, nodes_left
+
+    if nodes_per_line < 1:
+        error = "There must be at least 1 node per line"
+        raise ValueError(error)
+
+    output, _ = preorder(huffman_tree.get_root())
+    return ", ".join(output)
 
 
 def format_performance_report(metrics: 'Performance') -> str:
