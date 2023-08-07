@@ -8,6 +8,7 @@ to the output file.
 Author: Rani Hinnawi
 Date: 2023-08-08
 """
+from sys import stderr
 from typing import TextIO
 from lab3.huffman_tree import HuffmanTree
 from lab3.huffman_encoding import HuffmanEncoding
@@ -16,7 +17,7 @@ from support.output_formatters import format_huffman_tree
 
 
 def run(frequency_table: TextIO, input_file: TextIO, output_file: TextIO,
-        encode=False, decode=False) -> None:
+        encode=False, decode=False, debug=False) -> None:
     """
     Wrapper function for encoding or decoding a string using Huffman Encoding
     and a user-provided frequency table.
@@ -35,6 +36,7 @@ def run(frequency_table: TextIO, input_file: TextIO, output_file: TextIO,
         huffman_tree = None
         frequency_table_size = 0
 
+        # TODO: turn size retrieval into helper function
         with open(frequency_table, 'r', encoding="utf-8") as ft:
             frequency_table_size = len(ft.readlines())
 
@@ -46,6 +48,9 @@ def run(frequency_table: TextIO, input_file: TextIO, output_file: TextIO,
         except ValueError as ve:
             error_message = ve.args[0]
             error = True
+
+            if debug:
+                print(error_message, file=stderr)
         finally:
             performance.stop()
 
