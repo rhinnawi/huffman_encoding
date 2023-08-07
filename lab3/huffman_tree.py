@@ -8,10 +8,14 @@ chaining.
 Author: Rani Hinnawi
 Date: 2023-08-08
 """
-from sys import stderr
+from sys import setrecursionlimit, stderr
 from typing import List, Optional, TextIO
 from lab3.huffman_node import HuffmanNode
 from support.heap import Heap
+
+# Set recursion limit. Python default: 1000
+RECURSION_LIMIT = 750
+setrecursionlimit(RECURSION_LIMIT)
 
 
 class HuffmanTree:
@@ -35,10 +39,11 @@ class HuffmanTree:
         def preorder(root: Optional['HuffmanNode']) -> List[str]:
             rep = []
 
+            # Visit root, then left, then right
             if not root:
                 return rep
 
-            rep.append(f"{root.get_characters()}: {root.get_frequency()}")
+            rep.append(str(root))
 
             if root.get_left():
                 rep.extend(preorder(root.get_left()))
