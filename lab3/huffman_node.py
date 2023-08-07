@@ -127,12 +127,14 @@ class HuffmanNode:
             int: Negative if this node comes before, positive if after, 0 if
                 equal
         """
-        if len(self._chars) == len(other.get_characters()):
+        if len(self._chars) == 1 and len(other.get_characters()) != 1:
+            return 1  # This node takes precedence
+        elif len(self._chars) != 1 and len(other.get_characters()) == 1:
+            return -1  # The other node takes precedence
+        else:
+            # Compare lexicographically for all other cases
             # Shortened version of if-else statements returning -1, 0, or 1
-            return (self._chars > other.get_characters()) - \
-                (self._chars < other.get_characters())
-
-        return len(self._chars) - len(other.get_characters())
+            return int(self._chars < other.get_characters())
 
     def get_frequency(self) -> int:
         """
