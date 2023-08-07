@@ -61,7 +61,7 @@ class HuffmanEncoding:
             HuffmanEncoding: current HuffmanEncoding object instance
         """
 
-        def preorder(node: Optional['HuffmanNode'], prefix: str) -> None:
+        def preorder(node: Optional['HuffmanNode'], prefix="") -> None:
             """
             Helper function for preorder traversal of Huffman Tree to update
             each node's binary Huffman code. Each left child has a 0 appended,
@@ -83,6 +83,48 @@ class HuffmanEncoding:
             return
 
         root = self._tree.get_root()
-        preorder(root, "")
+        preorder(root)
 
         return self
+
+    def encode(self, expression: str) -> str:
+        """
+        Encodes a given expression using the Huffman Tree. Each character
+        should appear as a leaf node, which carries a binary Huffman code
+        corresponding to it.
+
+        Args:
+            expression (str): the string being encoded
+
+        Returns:
+            str: a new binary string made entirely of 1s and 0s
+
+        Raises:
+            ValueError: when a non-punctuation or non-white space character 
+                appears that is not a leaf node in the Huffman Tree (it has no
+                corresponding Huffman code)
+
+        TODO: Implement
+        """
+        def encode_char(node: 'HuffmanNode', char: str, code=""):
+            if node.is_leaf():
+                if node.get_characters() == char:
+                    return code
+                else:
+                    return None
+            else:
+                left_code = encode_char(node.get_left(), char, code + "0")
+                if left_code is not None:
+                    return left_code
+                right_code = encode_char(node.get_right(), char, code + "1")
+                return right_code
+
+        encoded = ""
+        for char in expression:
+            char_code = encode_char(self._tree.get_root(), char)
+            if char_code is not None:
+                encoded += char_code
+            else:
+                # Handle the case where the character is not in the Huffman tree
+                pass
+        return ""

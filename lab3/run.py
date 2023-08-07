@@ -24,5 +24,14 @@ def run(frequency_table: TextIO):
 
     huffman_encoding = HuffmanEncoding(huffman_tree)
     print(huffman_encoding, '\n')
+    print(huffman_tree.has_memo())
+
+    huffman_tree = HuffmanTree(frequency_table, True)
+    print(huffman_tree, '\n')
+
+    huffman_encoding = HuffmanEncoding(huffman_tree)
+    print(huffman_encoding, '\n')
+    print(huffman_tree.has_memo())
+    print(list(map(str, huffman_tree.get_memo())))
 
     print('OK')

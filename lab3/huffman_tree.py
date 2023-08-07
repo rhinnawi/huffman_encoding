@@ -13,8 +13,9 @@ from typing import List, Optional, TextIO
 from lab3.huffman_node import HuffmanNode
 from support.heap import Heap
 
-# Set recursion limit. Python default: 1000
-RECURSION_LIMIT = 750
+# Set recursion limit. Python default: 1000. Should not need to exceed number
+# of letters in Latin (English) alphabet
+RECURSION_LIMIT = 52
 setrecursionlimit(RECURSION_LIMIT)
 
 
@@ -24,8 +25,12 @@ class HuffmanTree:
     frequencies nodes in a binary tree structure.
     """
 
-    def __init__(self, frequency_table: TextIO) -> 'HuffmanTree':
+    def __init__(self, frequency_table: TextIO, memo=False) -> 'HuffmanTree':
         self._frequency_table = frequency_table
+
+        # Each index corresponds to a letter in the alphabet, +26 for lowercase
+        self._memo = \
+            [None for _ in range(ord('z') - ord('A') + 1)] if memo else []
         self._root = self._build_tree()
 
     def __str__(self) -> str:
@@ -55,9 +60,14 @@ class HuffmanTree:
 
         return ', '.join(preorder(self._root))
 
-    def _build_priority_queue(self) -> 'Heap':
+    def _prepare_leaf_nodes(self) -> 'Heap':
         """
-        Helper method for building the priority queue containing all leaf nodes.
+        Helper method for building the priority queue containing all leaf 
+        nodes. It error checks inputs and builds new nodes to be placed in the
+        queue. If memoization is activated for current instance, also places
+        references to each leaf node in a memo list index corresponding to its
+        character's position in the Latin (English) alphabet (+26 for lowercase
+        letters).
 
         Returns:
             Heap: priority queue containing HuffmanNode objects within a min
@@ -68,6 +78,7 @@ class HuffmanTree:
                 frequency value is not an integer >= 1
         """
         nodes_pq = Heap()
+        has_memo = self.has_memo()
         with open(self._frequency_table, 'r', encoding="utf-8") as freq_table:
             for line in freq_table:
                 # Get character and frequency values
@@ -98,8 +109,11 @@ class HuffmanTree:
                 new_node = HuffmanNode().set_characters(
                     character).set_frequency(frequency)
 
-                # Add new node to priority queue
+                # Add new node to priority queue. Account for memoization
                 nodes_pq.heap_push(new_node)
+                if has_memo:
+                    index = ord(character) - ord('A')
+                    self._memo[index] = new_node
 
         return nodes_pq
 
@@ -110,11 +124,9 @@ class HuffmanTree:
 
         Returns:
             'HuffmanNode': root of new Huffman Tree
-
-        TODO: complete implementation, including error checking
         """
         # Set up a priority queue with all leaf nodes
-        nodes_pq = self._build_priority_queue()
+        nodes_pq = self._prepare_leaf_nodes()
 
         # Combine nodes into left-right pairs under a new parent
         while nodes_pq.size() > 1:
@@ -144,3 +156,28 @@ class HuffmanTree:
             HuffmanNode: the root node
         """
         return self._root
+
+    def has_memo(self) -> bool:
+        """
+        Checks if HuffmanTree nodes utilizes memoization. Here, it means nodes
+        are referenced in a list with indices corresponding to each letter's
+        position in the Latin (English) alphabet. This must have been set with
+        HuffmanTree instantiation and cannot be changed.
+
+        Returns:
+            bool: True if memoization is used, otherwise False
+        """
+        return len(self._memo) != 0
+
+    def get_memo(self) -> Optional[List['HuffmanNode']]:
+        """
+        Getter method for retrieving a list of leaf HuffmanNode objects, where
+        each index i corresponds the value ord(char) - ord('A'), ord(char)
+        being the unicode value of any character char.
+
+        Returns:
+            List[HuffmanNode]: memo list with references to HuffmanNodes in
+                current instance of HuffmanTree OR None if this instance does
+                not utilize memoization
+        """
+        return self._memo
