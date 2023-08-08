@@ -7,6 +7,23 @@ outputted to a text file.
 Author: Rani Hinnawi
 Date: 2023-08-08
 """
+from typing import TextIO, List
+
+
+def write_to_output(output_file: TextIO, output_text: List[str]) -> None:
+    """
+    Helper function for writing to an output file the text from a list of
+    result and formatting strings.
+
+    Args:
+        output_file (TextIO): file to which the results are written
+        output_text (List[str]): list of results
+    """
+    with open(output_file, 'w', encoding="utf-8") as output:
+        output.write('\n'.join(output_text))
+        output.write("\nDone.")
+
+    return
 
 
 def break_string(expression: str, chars_per_line: int) -> str:

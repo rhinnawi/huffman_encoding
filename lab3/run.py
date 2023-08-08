@@ -15,26 +15,10 @@ from lab3.huffman_encoding import HuffmanEncoding
 from lab3.huffman_node import HuffmanNode
 from support.performance import Performance
 from support.output_formatters import format_encoded_results, \
-    format_decoded_results
+    format_decoded_results, write_to_output
 from support.output_tree_formatters import format_huffman_tree, \
     format_huffman_tree_binary_codes
 from support.format_performance_report import format_performance_report
-
-
-def write_to_output(output_file: TextIO, output_text: List[str]) -> None:
-    """
-    Helper function for writing to an output file the text from a list of
-    result and formatting strings.
-
-    Args:
-        output_file (TextIO): file to which the results are written
-        output_text (List[str]): list of results
-    """
-    with open(output_file, 'w', encoding="utf-8") as output:
-        output.write('\n'.join(output_text))
-        output.write("\nDone.")
-
-    return
 
 
 def run(frequency_table: TextIO, input_file: TextIO, output_file: TextIO,
