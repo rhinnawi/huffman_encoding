@@ -14,9 +14,11 @@ from lab3.huffman_tree import HuffmanTree
 from lab3.huffman_encoding import HuffmanEncoding
 from lab3.huffman_node import HuffmanNode
 from support.performance import Performance
-from support.output_formatters import format_huffman_tree, \
-    format_encoded_results, format_performance_report, \
-    format_huffman_tree_binary_codes, format_decoded_results
+from support.output_formatters import format_encoded_results, \
+    format_decoded_results
+from support.output_tree_formatters import format_huffman_tree, \
+    format_huffman_tree_binary_codes
+from support.format_performance_report import format_performance_report
 
 
 def write_to_output(output_file: TextIO, output_text: List[str]) -> None:
