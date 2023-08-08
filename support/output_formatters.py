@@ -159,7 +159,7 @@ def format_decoded_results(line_number: int, expression: str, result: str,
     return '\n'.join(write)
 
 
-def format_performance_report(metrics: 'Performance') -> str:
+def format_performance_report(metrics: 'Performance', micro_sec=True) -> str:
     """
     Function that formats the size and runtime data logged for each success and
     failure into a report. Runtimes are outputted by size in order from 
@@ -167,6 +167,8 @@ def format_performance_report(metrics: 'Performance') -> str:
 
     Args:
         metrics (Performance): Performance object with logged metrics data
+        micro_sec (bool): True if saving runtime in microseconds, otherwise
+            False
 
     Returns:
         str: logged successes and failures, formatted to suit a text file
@@ -194,5 +196,11 @@ def format_performance_report(metrics: 'Performance') -> str:
         write += f"{size}: {runtime}\n"
 
     write += "\nFormat:\n\tstring_size: [runtime1, ..., runtimeN]"
-    write += "\n\tNOTE: Runtimes measured in nanoseconds (ns)\n"
+    write += "\n\tNOTE: Runtimes measured in"
+
+    if micro_sec:
+        write += " microseconds (μs)\n"
+    else:
+        write += " nanoseconds (ns)\n"
+
     return write

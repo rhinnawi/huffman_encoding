@@ -14,9 +14,8 @@ from lab3.huffman_tree import HuffmanTree
 from lab3.huffman_encoding import HuffmanEncoding
 from support.performance import Performance
 from support.output_formatters import format_huffman_tree, \
-    format_encoded_results  # , \
+    format_encoded_results, format_performance_report  # , \
 # format_decoded_results, \
-# format_performance_report
 
 
 def write_to_output(output_file: TextIO, output_text: List[str]) -> None:
@@ -69,7 +68,7 @@ def run(frequency_table: TextIO, input_file: TextIO, output_file: TextIO,
         frequency_table_size = 0
         error = False
         huffman_tree = None
-        NODES_PER_LINE = 5
+        NODES_PER_LINE = 4
 
         with open(frequency_table, 'r', encoding="utf-8") as ft:
             frequency_table_size = len(ft.readlines())
@@ -97,7 +96,7 @@ def run(frequency_table: TextIO, input_file: TextIO, output_file: TextIO,
                     huffman_tree, nodes_per_line=NODES_PER_LINE) + '\n')
 
             out.append(f"Size (number of frequencies): {frequency_table_size}")
-            out.append(f"Runtime: {performance.get_runtime()}ns")
+            out.append(f"Runtime: {performance.get_runtime_micro_sec()}μs")
 
         return huffman_tree, error
 
@@ -142,13 +141,16 @@ def run(frequency_table: TextIO, input_file: TextIO, output_file: TextIO,
                 performance.stop()
 
                 if error:
-                    performance.log_error()
+                    performance.log_error(micro_sec=True)
                 else:
-                    performance.log_success()
+                    performance.log_success(micro_sec=True)
 
                 out.append(format_encoded_results(
-                    line_counter, expression, result, str(performance), error))
+                    line_counter, expression, result,
+                    performance.get_metrics_micro_sec(), error))
                 line_counter += 1
+
+    out.append(format_performance_report(performance, micro_sec=True))
 
     write_to_output(output_file, out)
     print('OK')

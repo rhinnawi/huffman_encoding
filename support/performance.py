@@ -101,15 +101,40 @@ class Performance:
         """
         return max(self._stop_time - self._start_time, 0)
 
-    def log_success(self) -> 'Performance':
+    def get_runtime_micro_sec(self) -> int:
+        """
+        Returns runtime based off stored start and stop times. If start is
+        stored after stop time, returns 0. Measures difference in ms.
+
+        Returns:
+            int: Difference between currently stored start and stop times or 0
+        """
+        # Get runtime, convert to ms (float), then round down as int
+        runtime = self.get_runtime()
+        runtime /= 1000
+        return int(runtime)
+
+    def get_metrics_micro_sec(self) -> int:
+        """
+        Prints a string representation of current Performance metrics using a
+        runtime measured in microseconds (μs).
+        """
+        return f"Size: {self._size}, Runtime: {self.get_runtime_micro_sec()}μs"
+
+    def log_success(self, micro_sec=False) -> 'Performance':
         """
         Method for logging the current metrics stored as a success
+
+        Args:
+            micro_sec (bool): True if saving runtime in microseconds, otherwise
+                False
 
         Returns:
             "Performance": Current instance of Performance class with newly 
                 logged success run
         """
-        new_log = self.get_runtime()
+        new_log = self.get_runtime_micro_sec() if micro_sec else \
+            self.get_runtime()
 
         # Add as a key-value pair {size: runtime}
         if (self._size in self._successes):
@@ -122,15 +147,20 @@ class Performance:
 
         return self
 
-    def log_error(self) -> 'Performance':
+    def log_error(self, micro_sec=False) -> 'Performance':
         """
         Method for logging the current metrics stored as an error
+
+        Args:
+            micro_sec (bool): True if saving runtime in microseconds, otherwise
+                False
 
         Returns:
             "Performance": Current instance of Performance class with newly
                 logged failed run
         """
-        new_log = self.get_runtime()
+        new_log = self.get_runtime_micro_sec() if micro_sec else \
+            self.get_runtime()
 
         # Add as a key-value pair {size: runtime}
         if (self._size in self._errors):
