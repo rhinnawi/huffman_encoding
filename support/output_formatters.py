@@ -175,32 +175,34 @@ def format_performance_report(metrics: 'Performance', micro_sec=True) -> str:
 
     TODO: Update to have write be a List that is joined by \n
     """
-    write = "\n-------Performance Report-------\n"
+    write = ["\n-------Performance Report-------\n"]
 
     # Note total number of successes and successes per size
-    write += f"Total number of successes: {metrics.get_num_successes()}\n"
+    write.append(f"Total number of successes: {metrics.get_num_successes()}")
 
     successes = metrics.get_successes()
     for size in sorted(successes.keys()):
         runtime = sorted(successes[size])
-        write += f"{size}: {runtime}\n"
+        write.append(f"{size}: {runtime}")
 
-    write += "\n"
+    write.append("\n")
 
     # Note total number of errors and errors per size
-    write += f"Total number of errors: {metrics.get_num_errors()}\n"
+    write.append(f"Total number of errors: {metrics.get_num_errors()}")
 
     errors = metrics.get_errors()
     for size in sorted(errors.keys()):
         runtime = sorted(errors[size])
-        write += f"{size}: {runtime}\n"
+        write.append(f"{size}: {runtime}\n")
 
-    write += "\nFormat:\n\tstring_size: [runtime1, ..., runtimeN]"
-    write += "\n\tNOTE: Runtimes measured in"
+    write.append("\nFormat:\n\tstring_size: [runtime1, ..., runtimeN]")
+    footer = "\tNOTE: Runtimes measured in"
 
     if micro_sec:
-        write += " microseconds (μs)\n"
+        footer += " microseconds (μs)"
     else:
-        write += " nanoseconds (ns)\n"
+        footer += " nanoseconds (ns)"
 
-    return write
+    write.append(footer)
+
+    return '\n'.join(write)
