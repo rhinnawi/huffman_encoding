@@ -13,7 +13,7 @@ aoshcbiugyzxqprtnfdewlkvjm: 413, aoshcbiugyzxqprt: 244, aoshcbi: 138, aos: 72,
 	j: 5, m: 19
 
 Size (number of frequencies): 26
-Runtime: 345μs
+Runtime: 349μs
 
 
 -------Conversion Results-------
@@ -22,7 +22,7 @@ Runtime: 345μs
 	Encoded: 		
 		0001000001101110101010000011011101110100010001101000000001001001011101
 		1101000100110010100011100100101000110100000000100100000010110101
-Size: 38, Runtime: 225μs
+Size: 38, Runtime: 216μs
 
 2. Original: 		
 		Peter Piper picked a peck of pickled peppers a peck of pickled pepp
@@ -33,28 +33,36 @@ Size: 38, Runtime: 225μs
 		0101011010111010110000100000010111010010111100000011001001011001110010
 		1111001101101100110101110101011010111010110000101011101011110101100101
 		1001110101110101100101100111001011110010110011
-Size: 90, Runtime: 635μs
+Size: 90, Runtime: 667μs
 
 3. Original: Houston, the Eagle has landed.
 	Encoded: 		
 		0010000001010000001011100001100001110010010110100000010011101101001000
 		0000000111010000010001001110110011
-Size: 30, Runtime: 194μs
+Size: 30, Runtime: 149μs
 
 4. Original: Is that your final answer?
 	Encoded: 		
 		0011100010111001000000001110101000000101000011010010001111000000001101
 		000001000000111001010110
-Size: 26, Runtime: 129μs
+Size: 26, Runtime: 124μs
 
+
+Conversion values: 
+	a: 19 - 00000, o: 18 - 00001, s: 35 - 0001, h: 17 - 00100, 
+	c: 17 - 00101, b: 16 - 00110, i: 16 - 00111, u: 15 - 01000, g: 14 - 01001, 
+	y: 8 - 010100, z: 3 - 0101010, x: 2 - 01010110, q: 1 - 01010111, p: 13 - 01011, 
+	r: 25 - 0110, t: 25 - 0111, n: 24 - 1000, f: 12 - 10010, d: 11 - 10011, 
+	e: 42 - 101, w: 21 - 1100, l: 20 - 1101, k: 10 - 11100, v: 5 - 111010, 
+	j: 5 - 111011, m: 19 - 1111
 
 -------Performance Report-------
 
 Total number of successes: 4
-26: [129]
-30: [194]
-38: [225]
-90: [635]
+26: [124]
+30: [149]
+38: [216]
+90: [667]
 
 
 Total number of errors: 0
@@ -62,3 +70,4 @@ Total number of errors: 0
 Format:
 	string_size: [runtime1, ..., runtimeN]
 	NOTE: Runtimes measured in microseconds (μs)
+Done.

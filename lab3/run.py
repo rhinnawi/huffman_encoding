@@ -12,10 +12,11 @@ from sys import stderr
 from typing import TextIO, List, Tuple
 from lab3.huffman_tree import HuffmanTree
 from lab3.huffman_encoding import HuffmanEncoding
+from lab3.huffman_node import HuffmanNode
 from support.performance import Performance
 from support.output_formatters import format_huffman_tree, \
-    format_encoded_results, format_performance_report  # , \
-# format_decoded_results, \
+    format_encoded_results, format_performance_report, \
+    format_huffman_tree_binary_codes, format_decoded_results
 
 
 def write_to_output(output_file: TextIO, output_text: List[str]) -> None:
@@ -29,6 +30,7 @@ def write_to_output(output_file: TextIO, output_text: List[str]) -> None:
     """
     with open(output_file, 'w', encoding="utf-8") as output:
         output.write('\n'.join(output_text))
+        output.write("\nDone.")
 
     return
 
@@ -51,6 +53,7 @@ def run(frequency_table: TextIO, input_file: TextIO, output_file: TextIO,
     # Set up Performance object and output strings used by runner functions
     performance = Performance()
     out = []
+    NODES_PER_LINE = 4
 
     def run_tree_setup() -> Tuple['HuffmanTree', List[str], bool]:
         """
@@ -68,7 +71,7 @@ def run(frequency_table: TextIO, input_file: TextIO, output_file: TextIO,
         frequency_table_size = 0
         error = False
         huffman_tree = None
-        NODES_PER_LINE = 4
+        nonlocal NODES_PER_LINE
 
         with open(frequency_table, 'r', encoding="utf-8") as ft:
             frequency_table_size = len(ft.readlines())
@@ -100,6 +103,7 @@ def run(frequency_table: TextIO, input_file: TextIO, output_file: TextIO,
 
         return huffman_tree, error
 
+    # Build Huffman Tree. Don't attempt encoding / decoding if error raised
     huffman_tree, error = run_tree_setup()
 
     if error:
@@ -128,7 +132,10 @@ def run(frequency_table: TextIO, input_file: TextIO, output_file: TextIO,
             performance.set_size(size).start()
 
             try:
-                result = huffman_encoding.encode(expression)
+                if encode:
+                    result = huffman_encoding.encode(expression)
+                elif decode:
+                    result = huffman_encoding.decode(expression)
             except ValueError as ve:
                 result = ve.args[0]
                 error = True
@@ -145,12 +152,32 @@ def run(frequency_table: TextIO, input_file: TextIO, output_file: TextIO,
                 else:
                     performance.log_success(micro_sec=True)
 
-                out.append(format_encoded_results(
-                    line_counter, expression, result,
-                    performance.get_metrics_micro_sec(), error))
+                if encode:
+                    out.append(format_encoded_results(
+                        line_counter, expression, result,
+                        performance.get_metrics_micro_sec(), error))
+                else:
+                    out.append(format_decoded_results(
+                        line_counter, expression, result,
+                        performance.get_metrics_micro_sec(), error))
                 line_counter += 1
 
+    # Display conversion values
+    out.append("\nConversion values: ")
+
+    if not memo:
+        # If not using memoization, codes are not preset
+        huffman_tree.set_codes()
+
+    out.append(format_huffman_tree_binary_codes(huffman_tree, NODES_PER_LINE))
+
+    # Output performance report
     out.append(format_performance_report(performance, micro_sec=True))
 
+    # Output results
     write_to_output(output_file, out)
+
+    a = HuffmanNode().set_characters('a').set_frequency(1)
+    b = HuffmanNode().set_characters('b').set_frequency(1)
+    print(a < b)
     print('OK')

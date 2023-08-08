@@ -33,7 +33,7 @@ class HuffmanNode:
             str: string representing the node as the key-value pair
                 'characters: frequency'
         """
-        return f'{self._chars}: {self._freq}'
+        return f"{self._chars}: {self._freq}"
 
     def __lt__(self, other: 'HuffmanNode') -> bool:
         """

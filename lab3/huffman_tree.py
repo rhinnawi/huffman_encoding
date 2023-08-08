@@ -37,7 +37,7 @@ class HuffmanTree:
         # Set binary codes for quick retrieval if has memo. Otherwise, find
         # dynamically during encoding process
         if memo:
-            self._set_codes()
+            self.set_codes()
 
     def __str__(self) -> str:
         """
@@ -166,7 +166,7 @@ class HuffmanTree:
         # Last item is the root of a new binary tree. Return root
         return nodes_pq.heap_pop()
 
-    def _set_codes(self) -> 'HuffmanTree':
+    def set_codes(self) -> 'HuffmanTree':
         """
         Method for adding binary codes to Huffman tree nodes.
 
@@ -231,7 +231,7 @@ class HuffmanTree:
 
         if not self.has_memo():
             # Case: without memoization toggled on, no codes are set to print
-            self._set_codes()
+            self.set_codes()
 
         return ', '.join(preorder(self._root))
 
