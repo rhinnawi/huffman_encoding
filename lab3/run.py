@@ -12,7 +12,6 @@ from sys import stderr
 from typing import TextIO, List, Tuple
 from lab3.huffman_tree import HuffmanTree
 from lab3.huffman_encoding import HuffmanEncoding
-from lab3.huffman_node import HuffmanNode
 from support.performance import Performance
 from support.output_formatters import format_encoded_results, \
     format_decoded_results, write_to_output
