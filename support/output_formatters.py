@@ -87,8 +87,20 @@ def format_huffman_tree(huffman_tree: 'HuffmanTree', nodes_per_line: int) \
     return ", ".join(output)
 
 
+def break_string(expression: str, chars_per_line: int) -> str:
+    if len(expression) <= chars_per_line:
+        return expression
+
+    # Begin on new line with indentation
+    lines = ["\t\t"]
+    for i in range(0, len(expression), chars_per_line):
+        lines.append(expression[i:i + chars_per_line])
+    return "\n\t\t".join(lines)
+
+
 def format_encoded_results(line_number: int, expression: str, result: str,
-                           metrics: str, error=False) -> str:
+                           metrics: str, error=False, chars_per_line=80) \
+        -> str:
     """
     Function that formats the inputted expression and the output given from the
     encoding process.
@@ -103,13 +115,17 @@ def format_encoded_results(line_number: int, expression: str, result: str,
     Returns:
         str: conditionally formatted results
     """
-    write = [f"{line_number}. Original: {expression}"]
+    # Format header line with original expression
+    prefix = f"{line_number}. Original: "
+    expression = break_string(expression, chars_per_line - len(prefix))
+    write = [prefix + expression]
 
-    if (error):
-        write.append(f"\tERROR - {result}")
-    else:
-        write.append(f"\tEncoded: {result}\n")
+    # Format and append result with error  handling
+    prefix = "\tError - " if error else "\tEncoded: "
+    result = break_string(result, chars_per_line - len(prefix))
+    write.append(prefix + result)
 
+    # Add metrics and return
     write.append(f"{metrics}\n")
 
     return '\n'.join(write)
