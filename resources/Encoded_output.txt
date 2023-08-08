@@ -1,4 +1,5 @@
 -------Huffman Tree in Preorder-------
+
 AOSHCBIUGYZXQPRTNFDEWLKVJM: 413, AOSHCBIUGYZXQPRT: 244, AOSHCBI: 138, AOS: 72, AO: 37, 
 	A: 19, O: 18, S: 35, HCBI: 66, HC: 34, H: 17, 
 	C: 17, BI: 32, B: 16, I: 16, UGYZXQPRT: 106, UGYZXQP: 56, 
@@ -10,4 +11,17 @@ AOSHCBIUGYZXQPRTNFDEWLKVJM: 413, AOSHCBIUGYZXQPRT: 244, AOSHCBI: 138, AOS: 72, A
 	VJ: 10, V: 5, J: 5, M: 19
 
 Size (number of frequencies): 26
-Runtime: 628100ns
+Runtime: 619500ns
+-------Conversion Results-------
+
+1. Original: 01011001010110011111011011
+	ERROR - INVALID CHAR: the character '0' is not a leaf node in the frequency table, a permitted punctuation symbol, or a whitespace
+Size: 26, Runtime: 51300ns
+
+2. Original: 10110000101010011011101101100010110010101100010111000110111
+	ERROR - INVALID CHAR: the character '1' is not a leaf node in the frequency table, a permitted punctuation symbol, or a whitespace
+Size: 59, Runtime: 34600ns
+
+3. Original: 11111110001000111111101011111011001111111000100011111000001010000001110010111
+	ERROR - INVALID CHAR: the character '1' is not a leaf node in the frequency table, a permitted punctuation symbol, or a whitespace
+Size: 77, Runtime: 31700ns

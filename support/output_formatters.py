@@ -13,14 +13,14 @@ from support.performance import Performance
 from lab3.huffman_tree import HuffmanTree
 from lab3.huffman_node import HuffmanNode
 
-# TODO: format huffman encoding outputs
 # Set recursion limit. Python default: 1000. Should not need to exceed number
 # of letters in Latin (English) alphabet
 RECURSION_LIMIT = 52
 setrecursionlimit(RECURSION_LIMIT)
 
 
-def format_huffman_tree(huffman_tree: 'HuffmanTree', nodes_per_line: int) -> str:
+def format_huffman_tree(huffman_tree: 'HuffmanTree', nodes_per_line: int) \
+        -> str:
     """
     Function that formats the number of Huffman Tree nodes per line for easier
     readability in an output file.
@@ -85,6 +85,62 @@ def format_huffman_tree(huffman_tree: 'HuffmanTree', nodes_per_line: int) -> str
 
     output, _ = preorder(huffman_tree.get_root())
     return ", ".join(output)
+
+
+def format_encoded_results(line_number: int, expression: str, result: str,
+                           metrics: str, error=False) -> str:
+    """
+    Function that formats the inputted expression and the output given from the
+    encoding process.
+
+    Args:
+        line_number (int): number for labelling lines in the output
+        expression (str): original expression being encoded
+        result (str): encoded binary expression OR error message
+        metrics (str): string representation of Performance values (size, runtime)
+        error (bool): indicator of whether result is an error message
+
+    Returns:
+        str: conditionally formatted results
+    """
+    write = [f"{line_number}. Original: {expression}"]
+
+    if (error):
+        write.append(f"\tERROR - {result}")
+    else:
+        write.append(f"\tEncoded: {result}\n")
+
+    write.append(f"{metrics}\n")
+
+    return '\n'.join(write)
+
+
+def format_decoded_results(line_number: int, expression: str, result: str,
+                           metrics: str, error=False) -> str:
+    """
+    Function that formats the inputted expression and the output given from the
+    decoding process.
+
+    Args:
+        line_number (int): number for labelling lines in the output
+        expression (str): original expression being decoded
+        result (str): decoded expression OR error message
+        metrics (str): string representation of Performance values (size, runtime)
+        error (bool): indicator of whether result is an error message
+
+    Returns:
+        str: conditionally formatted results
+    """
+    write = [f"{line_number}. Binary: {expression}"]
+
+    if (error):
+        write.append(f"\tERROR - {result}")
+    else:
+        write.append(f"\tDecoded: {result}\n")
+
+    write.append(f"{metrics}\n")
+
+    return '\n'.join(write)
 
 
 def format_performance_report(metrics: 'Performance') -> str:

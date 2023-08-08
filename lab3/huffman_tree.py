@@ -14,8 +14,9 @@ from lab3.huffman_node import HuffmanNode
 from support.heap import Heap
 
 # Set recursion limit. Python default: 1000. Should not need to exceed number
-# of letters in Latin (English) alphabet
-RECURSION_LIMIT = 52
+# of letters in Latin (English) alphabet. +1 for buffer. Limit extended for
+# Python built-in functions
+RECURSION_LIMIT = 500
 setrecursionlimit(RECURSION_LIMIT)
 
 
@@ -28,9 +29,9 @@ class HuffmanTree:
     def __init__(self, frequency_table: TextIO, memo=False) -> 'HuffmanTree':
         self._frequency_table = frequency_table
 
-        # Each index corresponds to a letter in the alphabet, +26 for lowercase
+        # Each index corresponds to a letter in the alphabet
         self._memo = \
-            [None for _ in range(ord('z') - ord('A') + 1)] if memo else []
+            [None for _ in range(ord('z') - ord('a') + 1)] if memo else []
         self._root = self._build_tree()
 
         # Set binary codes for quick retrieval if has memo. Otherwise, find
@@ -81,8 +82,7 @@ class HuffmanTree:
         nodes. It error checks inputs and builds new nodes to be placed in the
         queue. If memoization is activated for current instance, also places
         references to each leaf node in a memo list index corresponding to its
-        character's position in the Latin (English) alphabet (+26 for lowercase
-        letters).
+        character's position in the Latin (English) alphabet. Case insensitive.
 
         Returns:
             Heap: priority queue containing HuffmanNode objects within a min
@@ -98,6 +98,9 @@ class HuffmanTree:
             for line in freq_table:
                 # Get character and frequency values
                 character, _, frequency = line.strip().split()
+
+                # Enforce case insensitivity
+                character = character.lower()
 
                 try:
                     frequency = int(frequency)
@@ -127,7 +130,7 @@ class HuffmanTree:
                 # Add new node to priority queue. Account for memoization
                 nodes_pq.heap_push(new_node)
                 if has_memo:
-                    index = ord(character) - ord('A')
+                    index = ord(character) - ord('a')
                     self._memo[index] = new_node
 
         return nodes_pq
@@ -214,7 +217,9 @@ class HuffmanTree:
             if not root:
                 return rep
 
-            rep.append(f"{root.get_characters()}: {root.get_code()}")
+            if root.is_leaf():
+                rep.append(f"{root.get_characters()}: {root.get_code()}")
+                return rep
 
             if root.get_left():
                 rep.extend(preorder(root.get_left()))
@@ -223,6 +228,10 @@ class HuffmanTree:
                 rep.extend(preorder(root.get_right()))
 
             return rep
+
+        if not self.has_memo():
+            # Case: without memoization toggled on, no codes are set to print
+            self._set_codes()
 
         return ', '.join(preorder(self._root))
 
@@ -250,7 +259,7 @@ class HuffmanTree:
     def get_memo(self) -> Optional[List['HuffmanNode']]:
         """
         Getter method for retrieving a list of leaf HuffmanNode objects, where
-        each index i corresponds the value ord(char) - ord('A'), ord(char)
+        each index i corresponds the value ord(char) - ord('a'), ord(char)
         being the unicode value of any character char.
 
         Returns:

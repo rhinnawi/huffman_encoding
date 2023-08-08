@@ -78,12 +78,15 @@ class HuffmanEncoding:
         encoded = ""
         leaf_nodes = self._tree.get_memo()
         for char in expression:
+            # Enforce case insensitivity
+            char = char.lower()
+
             # Get binary encoding for symbol. Add to output string
             if (char in self._allowed_nonalpha_chars) or (char.isspace()):
                 # Case: char is a whitespace or permitted punctuation symbol
                 continue
 
-            index = ord(char) - ord('A')
+            index = ord(char) - ord('a')
             if (index >= len(leaf_nodes)) or (index < 0):
                 # Error case: character is not in the Huffman tree
                 raise ValueError(self._value_error_message(char))
@@ -148,6 +151,9 @@ class HuffmanEncoding:
 
         encoded = ""
         for char in expression:
+            # Enforce case insensitivity
+            char = char.lower()
+
             # Get binary encoding for symbol. Add to output string
             if (char in self._allowed_nonalpha_chars) or (char.isspace()):
                 # Case: char is a whitespace or permitted punctuation symbol
