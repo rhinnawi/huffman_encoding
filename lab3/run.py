@@ -170,7 +170,5 @@ def run(frequency_table: TextIO, input_file: TextIO, output_file: TextIO,
     # Output results
     write_to_output(output_file, out)
 
-    a = HuffmanNode().set_characters('a').set_frequency(1)
-    b = HuffmanNode().set_characters('b').set_frequency(1)
-    print(a < b)
-    print('OK')
+    if debug:
+        print('OK', file=stderr)

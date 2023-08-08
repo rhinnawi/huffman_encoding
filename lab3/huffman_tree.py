@@ -89,11 +89,12 @@ class HuffmanTree:
                 heap
 
         Raises:
-            ValueError: character key is not a single alphabetical character or
-                frequency value is not an integer >= 1
+            ValueError: character key is not a single, unique alphabetical
+                character or frequency value is not an integer >= 1
         """
         nodes_pq = Heap()
         has_memo = self.has_memo()
+        unique_chars = set()
         with open(self._frequency_table, 'r', encoding="utf-8") as freq_table:
             for line in freq_table:
                 # Get character and frequency values
@@ -111,6 +112,11 @@ class HuffmanTree:
                 if frequency < 1:
                     # Error case: cannot have negative frequency
                     error = "INVALID FREQUENCY: must be > 0"
+                    raise ValueError(error)
+
+                if character in unique_chars:
+                    # Case: repeat characters in file
+                    error = f"INVALID CHAR: {character} has already been added"
                     raise ValueError(error)
 
                 if len(character) != 1:
@@ -132,6 +138,9 @@ class HuffmanTree:
                 if has_memo:
                     index = ord(character) - ord('a')
                     self._memo[index] = new_node
+
+                # Add character to set for error checking
+                unique_chars.add(character)
 
         return nodes_pq
 
