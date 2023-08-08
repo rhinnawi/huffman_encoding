@@ -13,24 +13,28 @@ aoshcbiugyzxqprtnfdewlkvjm: 413, aoshcbiugyzxqprt: 244, aoshcbi: 138, aos: 72,
 	j: 5, m: 19
 
 Size (number of frequencies): 26
-Runtime: 328μs
+Runtime: 649μs
 
 
 -------Conversion Results-------
 
 1. Binary: 01011001010110011111011011
 	Error - INVALID BINARY: Leftover bits in the encoded string. Cannot be converted.
-Size: 26, Runtime: 11μs
+Size: 26, Runtime: 24μs
 
 2. Binary: 10110000101010011011101101100010110010101100010111000110111
 	Error - INVALID BINARY: Leftover bits in the encoded string. Cannot be converted.
-Size: 59, Runtime: 15μs
+Size: 59, Runtime: 27μs
 
 3. Binary: 		
 		11111110001000111111101011111011001111111000100011111000001010000001110010
 		111
 	Error - INVALID BINARY: Leftover bits in the encoded string. Cannot be converted.
-Size: 77, Runtime: 18μs
+Size: 77, Runtime: 33μs
+
+4. Binary: 00000
+	Decoded: a
+Size: 5, Runtime: 4μs
 
 
 Conversion values: 
@@ -43,15 +47,16 @@ Conversion values:
 
 -------Performance Report-------
 
-Total number of successes: 0
+Total number of successes: 1
+5: [4]
 
 
 Total number of errors: 3
-26: [11]
+26: [24]
 
-59: [15]
+59: [27]
 
-77: [18]
+77: [33]
 
 
 Format:

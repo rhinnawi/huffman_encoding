@@ -13,24 +13,38 @@ aoshcbiugyzxqprtnfdewlkvjm: 413, aoshcbiugyzxqprt: 244, aoshcbi: 138, aos: 72,
 	j: 5, m: 19
 
 Size (number of frequencies): 26
-Runtime: 328μs
+Runtime: 340μs
 
 
 -------Conversion Results-------
 
-1. Binary: 01011001010110011111011011
+1. Binary: 0
 	Error - INVALID BINARY: Leftover bits in the encoded string. Cannot be converted.
-Size: 26, Runtime: 11μs
+Size: 1, Runtime: 4μs
 
-2. Binary: 10110000101010011011101101100010110010101100010111000110111
+2. Binary: 1
 	Error - INVALID BINARY: Leftover bits in the encoded string. Cannot be converted.
-Size: 59, Runtime: 15μs
+Size: 1, Runtime: 2μs
 
-3. Binary: 		
-		11111110001000111111101011111011001111111000100011111000001010000001110010
-		111
+3. Binary: Hello
+	Error - INVALID CHAR: H is not a binary bit
+Size: 5, Runtime: 1μs
+
+4. Binary: 1o1o1
+	Error - INVALID CHAR: o is not a binary bit
+Size: 5, Runtime: 1μs
+
+5. Binary: OOOOO
+	Error - INVALID CHAR: O is not a binary bit
+Size: 5, Runtime: 0μs
+
+6. Binary: lOl
+	Error - INVALID CHAR: l is not a binary bit
+Size: 3, Runtime: 0μs
+
+7. Binary: 11111111111111111
 	Error - INVALID BINARY: Leftover bits in the encoded string. Cannot be converted.
-Size: 77, Runtime: 18μs
+Size: 17, Runtime: 5μs
 
 
 Conversion values: 
@@ -46,12 +60,14 @@ Conversion values:
 Total number of successes: 0
 
 
-Total number of errors: 3
-26: [11]
+Total number of errors: 7
+1: [2, 4]
 
-59: [15]
+3: [0]
 
-77: [18]
+5: [0, 1, 1]
+
+17: [5]
 
 
 Format:

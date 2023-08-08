@@ -191,11 +191,17 @@ class HuffmanEncoding:
                 node = node.get_right()
             else:
                 # Error case: not a binary string
-                error = "INVALID CHAR: must be a binary bit"
+                error = f"INVALID CHAR: {bit} is not a binary bit"
                 raise ValueError(error)
 
             if node.is_leaf():
                 result += node.get_characters()
                 node = self._tree.get_root()
+
+        if node != self._tree.get_root():
+            # Error case: leftover bits in the encoded_string
+            error = "INVALID BINARY: Leftover bits in the encoded string. "
+            error += "Cannot be converted."
+            raise ValueError(error)
 
         return result

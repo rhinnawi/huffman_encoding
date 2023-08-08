@@ -152,7 +152,8 @@ def run(frequency_table: TextIO, input_file: TextIO, output_file: TextIO,
                 else:
                     out.append(format_decoded_results(
                         line_counter, expression, result,
-                        performance.get_metrics_micro_sec(), error))
+                        performance.get_metrics_micro_sec(), error,
+                        chars_per_line=85))
                 line_counter += 1
 
     # Display conversion values

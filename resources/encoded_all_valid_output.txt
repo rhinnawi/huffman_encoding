@@ -1,0 +1,93 @@
+-------Huffman Tree in Preorder-------
+
+aoshcbiugyzxqprtnfdewlkvjm: 413, aoshcbiugyzxqprt: 244, aoshcbi: 138, aos: 72, 
+	ao: 37, a: 19, o: 18, s: 35, hcbi: 66, 
+	hc: 34, h: 17, c: 17, bi: 32, b: 16, 
+	i: 16, ugyzxqprt: 106, ugyzxqp: 56, ug: 29, u: 15, 
+	g: 14, yzxqp: 27, yzxq: 14, y: 8, zxq: 6, 
+	z: 3, xq: 3, x: 2, q: 1, p: 13, 
+	rt: 50, r: 25, t: 25, nfdewlkvjm: 169, nfde: 89, 
+	nfd: 47, n: 24, fd: 23, f: 12, d: 11, 
+	e: 42, wlkvjm: 80, wl: 41, w: 21, l: 20, 
+	kvjm: 39, kvj: 20, k: 10, vj: 10, v: 5, 
+	j: 5, m: 19
+
+Size (number of frequencies): 26
+Runtime: 325μs
+
+
+-------Conversion Results-------
+
+1. Binary: 011000000100000111
+	Decoded: rani
+Size: 18, Runtime: 7μs
+
+2. Binary: 1001100000011100000
+	Decoded: data
+Size: 19, Runtime: 5μs
+
+3. Binary: 0111
+	Decoded: t
+Size: 4, Runtime: 1μs
+
+4. Binary: 00000
+	Decoded: a
+Size: 5, Runtime: 1μs
+
+5. Binary: 1111
+	Decoded: m
+Size: 4, Runtime: 1μs
+
+6. Binary: 111100000111100000
+	Decoded: mama
+Size: 18, Runtime: 4μs
+
+7. Binary: 		
+		00000000010001001000010100110001110100001001010100010101001010110010101110
+		1011
+	Decoded: aoshcbiugyzxqp
+Size: 78, Runtime: 16μs
+
+8. Binary: 011001111000100101001110111001101111001110101110111111
+	Decoded: rtnfdewlkvjm
+Size: 54, Runtime: 12μs
+
+9. Binary: 		
+		00000000010001001000010100110001110100001001010100010101001010110010101110
+		1011011001111000100101001110111001101111001110101110111111
+	Decoded: aoshcbiugyzxqprtnfdewlkvjm
+Size: 132, Runtime: 28μs
+
+10. Binary: 		
+		0110011110001001010011101110011011110011101011101111110000000001000100100
+		00101001100011101000010010101000101010010101100101011101011
+	Decoded: rtnfdewlkvjmaoshcbiugyzxqp
+Size: 132, Runtime: 28μs
+
+
+Conversion values: 
+	a: 19 - 00000, o: 18 - 00001, s: 35 - 0001, h: 17 - 00100, 
+	c: 17 - 00101, b: 16 - 00110, i: 16 - 00111, u: 15 - 01000, g: 14 - 01001, 
+	y: 8 - 010100, z: 3 - 0101010, x: 2 - 01010110, q: 1 - 01010111, p: 13 - 01011, 
+	r: 25 - 0110, t: 25 - 0111, n: 24 - 1000, f: 12 - 10010, d: 11 - 10011, 
+	e: 42 - 101, w: 21 - 1100, l: 20 - 1101, k: 10 - 11100, v: 5 - 111010, 
+	j: 5 - 111011, m: 19 - 1111
+
+-------Performance Report-------
+
+Total number of successes: 10
+4: [1, 1]
+5: [1]
+18: [4, 7]
+19: [5]
+54: [12]
+78: [16]
+132: [28, 28]
+
+
+Total number of errors: 0
+
+Format:
+	string_size: [runtime1, ..., runtimeN]
+	NOTE: Runtimes measured in microseconds (μs)
+Done.
