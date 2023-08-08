@@ -49,6 +49,9 @@ def run(frequency_table: TextIO, input_file: TextIO, output_file: TextIO,
         encode (bool): True if input file strings will be encoded
         decode (bool): True if input file strings will be decoded
         debug (bool): True if debug mode is toggled on, otherwise False
+
+    Raises:
+        ValueError: if both decode and encode are False
     """
     # Set up Performance object and output strings used by runner functions
     performance = Performance()
@@ -102,6 +105,10 @@ def run(frequency_table: TextIO, input_file: TextIO, output_file: TextIO,
             out.append(f"Runtime: {performance.get_runtime_micro_sec()}μs")
 
         return huffman_tree, error
+
+    if encode == decode:
+        # Error case: decode OR encode can be True, but not both or neither
+        raise ValueError("Either encode or decode must be True")
 
     # Build Huffman Tree. Don't attempt encoding / decoding if error raised
     huffman_tree, error = run_tree_setup()

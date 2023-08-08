@@ -26,6 +26,8 @@ arg_parser.add_argument("input_file", type=str, help="Input file pathname")
 arg_parser.add_argument("output_file", type=str, help="Output file pathname")
 arg_parser.add_argument("--frequency_table", type=str,
                         help="(Optional) Frequency table file pathname")
+arg_parser.add_argument("--memoize", action="store_true",
+                        help="Toggles on memoization for encoding")
 arg_parser.add_argument("--debug", action="store_true",
                         help="Toggles debug mode to log errors to stderr")
 
@@ -46,7 +48,8 @@ freq_table = Path(args.frequency_table) if args.frequency_table else Path(
 # Validate file paths then run main program
 try:
     is_valid_io(in_file, out_file, freq_table)
-    run(freq_table, in_file, out_file)
+    run(freq_table, in_file, out_file, encode=args.encode,
+        memo=args.memoize, decode=args.decode, debug=args.debug)
 except FileNotFoundError as fnfe:
     error_message = fnfe.args[0]
     if args.debug:

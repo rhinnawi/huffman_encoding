@@ -168,12 +168,12 @@ class HuffmanEncoding:
 
         return encoded
 
-    def decode(self, compressed_string: str) -> str:
+    def decode(self, encoded_string: str) -> str:
         """
         Decompresses a given compressed binary string using the Huffman Tree.
 
         Args:
-            compressed_string (str): the compressed binary string
+            encoded_string (str): the compressed binary string
 
         Returns:
             str: the decompressed string
@@ -184,7 +184,7 @@ class HuffmanEncoding:
         node = self._tree.get_root()
         result = ""
 
-        for bit in compressed_string:
+        for bit in encoded_string:
             if bit == '0':
                 node = node.get_left()
             elif bit == '1':

@@ -13,24 +13,24 @@ aoshcbiugyzxqprtnfdewlkvjm: 413, aoshcbiugyzxqprt: 244, aoshcbi: 138, aos: 72,
 	j: 5, m: 19
 
 Size (number of frequencies): 26
-Runtime: 311μs
+Runtime: 378μs
 
 
 -------Conversion Results-------
 
 1. Binary: 01011001010110011111011011
-	Decoded: 
-Size: 26, Runtime: 0μs
+	Decoded: pcrtle
+Size: 26, Runtime: 8μs
 
 2. Binary: 10110000101010011011101101100010110010101100010111000110111
-	Decoded: 
-Size: 59, Runtime: 0μs
+	Decoded: enzrjrcfenewr
+Size: 59, Runtime: 13μs
 
 3. Binary: 		
 		111111100010001111111010111110110011111110001000111110000010100000011
 		10010111
-	Decoded: 
-Size: 77, Runtime: 0μs
+	Decoded: mkumvmedmnnmncatc
+Size: 77, Runtime: 16μs
 
 
 Conversion values: 
@@ -44,9 +44,9 @@ Conversion values:
 -------Performance Report-------
 
 Total number of successes: 3
-26: [0]
-59: [0]
-77: [0]
+26: [8]
+59: [13]
+77: [16]
 
 
 Total number of errors: 0
