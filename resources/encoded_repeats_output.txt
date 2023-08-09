@@ -13,60 +13,50 @@ aoshcbiugyzxqprtnfdewlkvjm: 413, aoshcbiugyzxqprt: 244, aoshcbi: 138, aos: 72,
 	j: 5, m: 19
 
 Size (number of frequencies): 26
-Runtime: 492μs
+Runtime: 314μs
 
 
 -------Conversion Results-------
 
-1. Binary: 011000000100000111
-	Decoded: rani
-Size: 18, Runtime: 8μs
+1. Binary: 00000
+	Decoded: a
+Size: 5, Runtime: 4μs
 
-2. Binary: 1001100000011100000
-	Decoded: data
-Size: 19, Runtime: 5μs
+2. Binary: 00000
+	Decoded: a
+Size: 5, Runtime: 2μs
 
-3. Binary: 0111
-	Decoded: t
-Size: 4, Runtime: 2μs
+3. Binary: 00000
+	Decoded: a
+Size: 5, Runtime: 2μs
 
 4. Binary: 00000
 	Decoded: a
 Size: 5, Runtime: 2μs
 
-5. Binary: 1111
-	Decoded: m
-Size: 4, Runtime: 1μs
+5. Binary: 00000
+	Decoded: a
+Size: 5, Runtime: 1μs
 
-6. Binary: 111100000111100000
-	Decoded: mama
-Size: 18, Runtime: 5μs
+6. Binary: 00000
+	Decoded: a
+Size: 5, Runtime: 1μs
 
-7. Binary: 1111 00000
-	Decoded: ma
-Size: 10, Runtime: 5μs
+7. Binary: 00000
+	Decoded: a
+Size: 5, Runtime: 3μs
 
-8. Binary: 		
-		00000000010001001000010100110001110100001001010100010101001010110010101110
-		1011
-	Decoded: aoshcbiugyzxqp
-Size: 78, Runtime: 17μs
+8. Binary: 00000
+	Decoded: a
+Size: 5, Runtime: 2μs
 
-9. Binary: 011001111000100101001110111001101111001110101110111111
-	Decoded: rtnfdewlkvjm
-Size: 54, Runtime: 13μs
+9. Binary: 00000
+	Decoded: a
+Size: 5, Runtime: 2μs
 
-10. Binary: 		
-		0000000001000100100001010011000111010000100101010001010100101011001010111
-		01011011001111000100101001110111001101111001110101110111111
-	Decoded: aoshcbiugyzxqprtnfdewlkvjm
-Size: 132, Runtime: 49μs
-
-11. Binary: 		
-		0110011110001001010011101110011011110011101011101111110000000001000100100
-		00101001100011101000010010101000101010010101100101011101011
-	Decoded: rtnfdewlkvjmaoshcbiugyzxqp
-Size: 132, Runtime: 64μs
+10. Binary: 00000
+	Decoded: a
+Size: 5, Runtime: 2μs
 
 
 Conversion values: 
@@ -79,15 +69,8 @@ Conversion values:
 
 -------Performance Report-------
 
-Total number of successes: 11
-4: [1, 2]
-5: [2]
-10: [5]
-18: [5, 8]
-19: [5]
-54: [13]
-78: [17]
-132: [49, 64]
+Total number of successes: 10
+5: [1, 1, 2, 2, 2, 2, 2, 2, 3, 4]
 
 
 Total number of errors: 0

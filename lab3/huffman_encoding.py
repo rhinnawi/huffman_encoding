@@ -181,27 +181,36 @@ class HuffmanEncoding:
         Raises:
             ValueError: if a character (bit) is not a 0 or 1
         """
+        # Begin conversion at the root. Set up output and error message
         node = self._tree.get_root()
         result = ""
+        error_message = "INVALID BINARY: Leftover bits in the encoded string. "
+        error_message += "Cannot be converted."
 
+        # Traverse Huffman Tree. 0 = left, 1 = right. Leaf = letter decoded
         for bit in encoded_string:
             if bit == '0':
                 node = node.get_left()
             elif bit == '1':
                 node = node.get_right()
+            elif bit.isspace():
+                # Case: whitespace encountered at end of a potential word
+                if node != self._tree.get_root():
+                    # Error case: "word" in binary string could not be decoded
+                    raise ValueError(error_message)
+                continue
             else:
                 # Error case: not a binary string
                 error = f"INVALID CHAR: {bit} is not a binary bit"
                 raise ValueError(error)
 
             if node.is_leaf():
+                # Add letter to decoded message. Restart next bit at the root
                 result += node.get_characters()
                 node = self._tree.get_root()
 
         if node != self._tree.get_root():
             # Error case: leftover bits in the encoded_string
-            error = "INVALID BINARY: Leftover bits in the encoded string. "
-            error += "Cannot be converted."
-            raise ValueError(error)
+            raise ValueError(error_message)
 
         return result

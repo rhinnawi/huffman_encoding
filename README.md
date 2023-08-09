@@ -9,7 +9,8 @@ regular strings based on user preference.
 Precedence for characters that have the same frequency is generally open to
 interpretation. In this repository, the Huffman Encoding Tree resolves ties by
 giving single letter groups precedence (left child node) over multiple letter
-groups, then alphabetically.
+groups, then alphabetically. Characters must be alphabetic, but cases are not
+enforced (they default to lowercase).
 
 ## Running Huffman Encoding
 
