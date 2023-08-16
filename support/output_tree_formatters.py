@@ -10,8 +10,8 @@ Date: 2023-08-08
 """
 from sys import setrecursionlimit
 from typing import Optional, List, Tuple
-from lab3.huffman_tree import HuffmanTree
-from lab3.huffman_node import HuffmanNode
+from hencoding.huffman_tree import HuffmanTree
+from hencoding.huffman_node import HuffmanNode
 
 # Set recursion limit. Python default: 1000. Should not need to exceed number
 # of letters in Latin (English) alphabet. +1 for buffer. Limit extended for

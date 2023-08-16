@@ -10,7 +10,7 @@ Date: 2023-08-08
 """
 from sys import setrecursionlimit, stderr
 from typing import List, Optional, TextIO
-from lab3.huffman_node import HuffmanNode
+from hencoding.huffman_node import HuffmanNode
 from support.heap import Heap
 
 # Set recursion limit. Python default: 1000. Should not need to exceed number

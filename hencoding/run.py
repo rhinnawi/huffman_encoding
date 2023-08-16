@@ -10,8 +10,8 @@ Date: 2023-08-08
 """
 from sys import stderr
 from typing import TextIO, List, Tuple
-from lab3.huffman_tree import HuffmanTree
-from lab3.huffman_encoding import HuffmanEncoding
+from hencoding.huffman_tree import HuffmanTree
+from hencoding.huffman_encoding import HuffmanEncoding
 from support.performance import Performance
 from support.output_formatters import format_encoded_results, \
     format_decoded_results, write_to_output

@@ -10,8 +10,8 @@ Author: Rani Hinnawi
 Date: 2023-08-08
 """
 from typing import Optional
-from lab3.huffman_tree import HuffmanTree
-from lab3.huffman_node import HuffmanNode
+from hencoding.huffman_tree import HuffmanTree
+from hencoding.huffman_node import HuffmanNode
 
 ALLOWED_PUNCTUATION = {'.', ',', ';', ':', '!', '?', '-',
                        '"', "'", '(', ')', '/', '\\', '_', '@', '&', '*', '~'}

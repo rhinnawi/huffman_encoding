@@ -4,7 +4,8 @@ __main__
 This is the entry point for the huffman_encoding package. It runs when explicity 
 called and not by default when the package is imported. It can be called by the
 command: 
-python -m lab3 input_file output_file [--encode/decode] [...optional arguments]
+python -m hencoding input_file output_file [--encode/decode] 
+        [...optional arguments]
 
 The primary functionality lies in the package modules, and not directly in the
 main module here.
@@ -16,9 +17,9 @@ from sys import stderr
 from pathlib import Path
 import argparse
 from support.is_valid_io import is_valid_io
-from lab3.run import run
+from hencoding.run import run
 
-DEFAULT_FREQUENCY_TABLE_PATH = "lab3/DefaultFreqTable.txt"
+DEFAULT_FREQUENCY_TABLE_PATH = "hencoding/DefaultFreqTable.txt"
 
 # Set up command line argument parsing
 arg_parser = argparse.ArgumentParser()
