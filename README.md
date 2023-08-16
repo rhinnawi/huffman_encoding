@@ -16,17 +16,17 @@ enforced (they default to lowercase).
 
 1. Download and install Python on your computer
 2. Navigate to [this](.) directory (containing the README.md)
-3. Run the program as a module: `python -m lab3 -h`. This will print the help
+3. Run the program as a module: `python -m hencoding -h`. This will print the help
    message.
 4. Run the program as a module (with real inputs):
-   `python -m lab3 <some_input_file> <some_output_file> --encode/--decode`
-   - Example: `python -m lab3 resources/input.txt resources/output.txt --encode`
+   `python -m hencoding <some_input_file> <some_output_file> --encode/--decode`
+   - Example: `python -m hencoding resources/input.txt resources/output.txt --encode`
    - Optional - run the program as a module with errors outputted to stderr:
-     `python -m lab3 <some_input_file> <some_output_file> --decode --debug`
+     `python -m hencoding <some_input_file> <some_output_file> --decode --debug`
    - Optional - run the program as a module using multiple optional arguments:
-     `python -m lab3 <some_input_file> <some_output_file> --encode --memo`
+     `python -m hencoding <some_input_file> <some_output_file> --encode --memo`
    - Optional - run the program as a module using optional file:
-     `python -m lab3 <some_input_file> <some_output_file> --encode --frequency_table <some_frequency_table_file>`
+     `python -m hencoding <some_input_file> <some_output_file> --encode --frequency_table <some_frequency_table_file>`
 
 Output will be written to the specified output file after processing the input
 file.
@@ -34,7 +34,7 @@ file.
 ### Huffman Encoding Usage:
 
 ```commandline
-usage: python -m lab3 [-h] in_file out_file [--frequency_table] frequency_table
+usage: python -m hencoding [-h] in_file out_file [--frequency_table] frequency_table
         [--debug] [--memoize] [--encode] [--decode]
 
 positional arguments:
@@ -70,13 +70,13 @@ Usage statements reference
   files
   - [README.md](README.md):
     The guide you're reading.
-  - [lab3](lab3):
+  - [hencoding](hencoding):
     This is the _package_.
-    - [`__init__.py`](lab3/__init__.py)
+    - [`__init__.py`](hencoding/__init__.py)
       This contains the functionality that is automatically run when importing
       the package
-    - [`__main__.py`](lab3/__main__.py)
-      This file is the entrypoint to the lab3 package when run as a program
+    - [`__main__.py`](hencoding/__main__.py)
+      This file is the entrypoint to the hencoding package when run as a program
     - `*.py`
       These are Python scripts that do the actual work
   - [support](support):
