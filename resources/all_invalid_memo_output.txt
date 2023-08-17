@@ -1,0 +1,234 @@
+-------Huffman Tree in Preorder-------
+
+aoshcbiugyzxqprtnfdewlkvjm: 413, aoshcbiugyzxqprt: 244, aoshcbi: 138, aos: 72, 
+	ao: 37, a: 19, o: 18, s: 35, hcbi: 66, 
+	hc: 34, h: 17, c: 17, bi: 32, b: 16, 
+	i: 16, ugyzxqprt: 106, ugyzxqp: 56, ug: 29, u: 15, 
+	g: 14, yzxqp: 27, yzxq: 14, y: 8, zxq: 6, 
+	z: 3, xq: 3, x: 2, q: 1, p: 13, 
+	rt: 50, r: 25, t: 25, nfdewlkvjm: 169, nfde: 89, 
+	nfd: 47, n: 24, fd: 23, f: 12, d: 11, 
+	e: 42, wlkvjm: 80, wl: 41, w: 21, l: 20, 
+	kvjm: 39, kvj: 20, k: 10, vj: 10, v: 5, 
+	j: 5, m: 19
+
+Size (number of frequencies): 26
+Runtime: 517μs
+
+
+-------Conversion Results-------
+
+1. Original: Lolhfd1
+	Error - 		
+		INVALID CHAR: the character '1' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 7, Runtime: 14μs
+
+2. Original: lkjhgl1
+	Error - 		
+		INVALID CHAR: the character '1' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 7, Runtime: 6μs
+
+3. Original: wwwwww2
+	Error - 		
+		INVALID CHAR: the character '2' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 7, Runtime: 5μs
+
+4. Original: Looofd1
+	Error - 		
+		INVALID CHAR: the character '1' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 7, Runtime: 4μs
+
+5. Original: lkjhgl1
+	Error - 		
+		INVALID CHAR: the character '1' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 7, Runtime: 4μs
+
+6. Original: wwggww2
+	Error - 		
+		INVALID CHAR: the character '2' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 7, Runtime: 4μs
+
+7. Original: Oolhmd1
+	Error - 		
+		INVALID CHAR: the character '1' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 7, Runtime: 4μs
+
+8. Original: lktjgl1
+	Error - 		
+		INVALID CHAR: the character '1' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 7, Runtime: 4μs
+
+9. Original: wwwwww3
+	Error - 		
+		INVALID CHAR: the character '3' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 7, Runtime: 4μs
+
+10. Original: dsdfse7
+	Error - 		
+		INVALID CHAR: the character '7' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 7, Runtime: 4μs
+
+11. Original: 2ddghkki
+	Error - 		
+		INVALID CHAR: the character '2' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 8, Runtime: 2μs
+
+12. Original: 1ljhlkjj
+	Error - 		
+		INVALID CHAR: the character '1' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 8, Runtime: 1μs
+
+13. Original: 5ljhlkjh
+	Error - 		
+		INVALID CHAR: the character '5' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 8, Runtime: 2μs
+
+14. Original: 4ddghkki
+	Error - 		
+		INVALID CHAR: the character '4' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 8, Runtime: 1μs
+
+15. Original: 3ljhlkjj
+	Error - 		
+		INVALID CHAR: the character '3' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 8, Runtime: 1μs
+
+16. Original: 5ljhlkjh
+	Error - 		
+		INVALID CHAR: the character '5' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 8, Runtime: 14μs
+
+17. Original: 5ddghkki
+	Error - 		
+		INVALID CHAR: the character '5' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 8, Runtime: 4μs
+
+18. Original: 3ljhlkjj
+	Error - 		
+		INVALID CHAR: the character '3' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 8, Runtime: 2μs
+
+19. Original: 0ljhlkjh
+	Error - 		
+		INVALID CHAR: the character '0' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 8, Runtime: 2μs
+
+20. Original: 8sflksjd
+	Error - 		
+		INVALID CHAR: the character '8' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 8, Runtime: 2μs
+
+21. Original: rt5yt
+	Error - 		
+		INVALID CHAR: the character '5' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 5, Runtime: 3μs
+
+22. Original: yu7uf
+	Error - 		
+		INVALID CHAR: the character '7' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 5, Runtime: 3μs
+
+23. Original: tt8nx
+	Error - 		
+		INVALID CHAR: the character '8' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 5, Runtime: 2μs
+
+24. Original: we9sd
+	Error - 		
+		INVALID CHAR: the character '9' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 5, Runtime: 2μs
+
+25. Original: vx9xc
+	Error - 		
+		INVALID CHAR: the character '9' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 5, Runtime: 2μs
+
+26. Original: qw2la
+	Error - 		
+		INVALID CHAR: the character '2' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 5, Runtime: 2μs
+
+27. Original: vm5ej
+	Error - 		
+		INVALID CHAR: the character '5' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 5, Runtime: 2μs
+
+28. Original: iw0di
+	Error - 		
+		INVALID CHAR: the character '0' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 5, Runtime: 2μs
+
+29. Original: he4ie
+	Error - 		
+		INVALID CHAR: the character '4' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 5, Runtime: 2μs
+
+30. Original: wo0ow
+	Error - 		
+		INVALID CHAR: the character '0' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 5, Runtime: 2μs
+
+31. Original: asdfghjklqwertyuiopzxcvbnm0
+	Error - 		
+		INVALID CHAR: the character '0' is not a leaf node in the frequency tab
+		le, a permitted punctuation symbol, or a whitespace
+Size: 27, Runtime: 14μs
+
+
+Conversion values: 
+	a: 19 - 00000, o: 18 - 00001, s: 35 - 0001, h: 17 - 00100, 
+	c: 17 - 00101, b: 16 - 00110, i: 16 - 00111, u: 15 - 01000, g: 14 - 01001, 
+	y: 8 - 010100, z: 3 - 0101010, x: 2 - 01010110, q: 1 - 01010111, p: 13 - 01011, 
+	r: 25 - 0110, t: 25 - 0111, n: 24 - 1000, f: 12 - 10010, d: 11 - 10011, 
+	e: 42 - 101, w: 21 - 1100, l: 20 - 1101, k: 10 - 11100, v: 5 - 111010, 
+	j: 5 - 111011, m: 19 - 1111
+
+-------Performance Report-------
+
+Total number of successes: 0
+
+
+Total number of errors: 31
+5: [2, 2, 2, 2, 2, 2, 2, 2, 3, 3]
+
+7: [4, 4, 4, 4, 4, 4, 4, 5, 6, 14]
+
+8: [1, 1, 1, 2, 2, 2, 2, 2, 4, 14]
+
+27: [14]
+
+
+Format:
+	string_size: [runtime1, ..., runtimeN]
+	NOTE: Runtimes measured in microseconds (μs)
+Done.
